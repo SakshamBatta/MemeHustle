@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+.futuristic-glitch {
+  position: relative;
+  color: #00ffff;
+  text-shadow: 1px 0 magenta, -1px 0 cyan;
+  animation: glitchShift 1.8s infinite alternate;
+}
+
+@keyframes glitchShift {
+  0% {
+    text-shadow: 1px 0 magenta, -1px 0 cyan;
+    transform: translate(0, 0);
+  }
+  20% {
+    text-shadow: 2px 0 magenta, -2px 0 cyan;
+    transform: translate(-1px, 1px);
+  }
+  40% {
+    text-shadow: -1px 0 magenta, 1px 0 cyan;
+    transform: translate(1px, -1px);
+  }
+  60% {
+    text-shadow: 1px 0 magenta, -1px 0 cyan;
+    transform: translate(0.5px, 1px);
+  }
+  100% {
+    text-shadow: 1px 0 magenta, -1px 0 cyan;
+    transform: translate(0, 0);
+  }
+}
+
+.flicker {
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
