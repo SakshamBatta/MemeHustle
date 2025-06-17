@@ -38,7 +38,6 @@ exports.createMeme = async (req, res) => {
 
 exports.getAllMemes = async (req, res) => {
   try {
-    // Step 1: Get all memes
     const { data: memes, error: memeError } = await supabase
       .from("memes")
       .select("*")
@@ -288,7 +287,7 @@ exports.generateVibe = async (req, res) => {
       );
       const match = rawVibe.match(/\*\*(.*?)\*\*/);
       if (match && match[1]) {
-        vibe = match[1].trim().replace(/:$/, ""); 
+        vibe = match[1].trim().replace(/:$/, "");
       } else {
         const lines = rawVibe
           .split("\n")
