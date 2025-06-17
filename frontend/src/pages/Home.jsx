@@ -65,6 +65,7 @@ export default function Home() {
         body: JSON.stringify({ type }),
       }).then(() => {
         toast.success(`Meme upvotes now at ${votes[id].up + 1}`);
+        setBids("");
       });
     } catch (err) {
       console.warn(err.message);
