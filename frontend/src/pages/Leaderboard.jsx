@@ -45,7 +45,9 @@ export default function Leaderboard() {
   useEffect(() => {
     const fetchTopMemes = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/leaderboard");
+        const res = await fetch(
+          "https://memehustle-4ema.onrender.com/api/leaderboard"
+        );
         const data = await res.json();
 
         if (Array.isArray(data) && data.length > 0) {

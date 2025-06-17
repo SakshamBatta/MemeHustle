@@ -57,7 +57,7 @@ export default function Home() {
     });
 
     try {
-      fetch(`http://localhost:3000/api/memes/${id}/vote`, {
+      fetch(`https://memehustle-4ema.onrender.com/api/memes/${id}/vote`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export default function Home() {
     const credits = bids[id];
 
     try {
-      fetch(`http://localhost:3000/api/memes/${id}/bid`, {
+      fetch(`https://memehustle-4ema.onrender.com/api/memes/${id}/bid`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,9 @@ export default function Home() {
   useEffect(() => {
     const fetchMemes = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/memes");
+        const res = await fetch(
+          "https://memehustle-4ema.onrender.com/api/memes"
+        );
         const data = await res.json();
 
         if (Array.isArray(data) && data.length > 0) {

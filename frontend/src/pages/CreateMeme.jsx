@@ -13,23 +13,29 @@ export default function CreateMeme() {
   const navigate = useNavigate();
 
   const generateCaption = () => {
-    fetch(`http://localhost:3000/api/memes/${currentMeme.id}/caption`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://memehustle-4ema.onrender.com/api/memes/${currentMeme.id}/caption`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setAiCaption(data.caption));
   };
 
   const generateVibe = () => {
-    fetch(`http://localhost:3000/api/memes/${currentMeme.id}/vibe`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://memehustle-4ema.onrender.com/api/memes/${currentMeme.id}/vibe`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setVibe(data.vibe));
   };
@@ -44,7 +50,7 @@ export default function CreateMeme() {
 
     console.log(payload);
 
-    fetch("http://localhost:3000/api/memes", {
+    fetch("https://memehustle-4ema.onrender.com/api/memes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
