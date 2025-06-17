@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Leaderboard.css";
 
 const dummyMemes = [
@@ -40,7 +40,28 @@ const dummyMemes = [
 ];
 
 export default function Leaderboard() {
-  const [topMemes] = useState(dummyMemes);
+  const [topMemes, setTopMemes] = useState([]);
+
+  useEffect(() => {
+    const fetchTopMemes = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/leaderboard");
+        const data = await res.json();
+
+        if (Array.isArray(data) && data.length > 0) {
+          setTopMemes(data);
+        } else {
+          setTopMemes(dummyMemes);
+        }
+      } catch (err) {
+        console.warn(err.message);
+        setTopMemes(dummyMemes);
+      }
+    };
+    const fetchTopMemesInterval = setInterval(fetchTopMemes, 1000);
+
+    return () => clearInterval(fetchTopMemesInterval);
+  }, []);
 
   return (
     <div className="leaderboard-container font-['VT323'] text-white px-4 py-8">
@@ -81,7 +102,7 @@ export default function Leaderboard() {
                   {meme.upvotes}
                 </td>
                 <td className="p-4 text-center text-[#00ffffaa]">
-                  {meme.highest_bid} ETH
+                  {meme.highest_bid}
                 </td>
               </tr>
             ))}
